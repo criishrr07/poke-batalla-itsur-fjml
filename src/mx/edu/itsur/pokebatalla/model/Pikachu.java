@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author FJML1983
+ * @author Cristian Herrera
  */
 public class Pikachu  extends Pokemon{
 
@@ -36,6 +36,7 @@ public class Pikachu  extends Pokemon{
         if(habilidad.equals("ATACKTRUENO")){
             //Logica del daño por atacktrueno
             System.out.println("Realizando ATACKTRUENO");
+            System.out.println("");
         }else if(habilidad.equals("BOLAVOLTIO")){
             //Logica del daño por BOLAVOLTIO
             System.out.println("Realizando BOLAVOLTIO");            

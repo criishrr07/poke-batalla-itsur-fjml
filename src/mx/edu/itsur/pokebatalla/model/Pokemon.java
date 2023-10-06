@@ -5,14 +5,17 @@
 package mx.edu.itsur.pokebatalla.model;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  *
- * @author FJML1983
+ * @author Cristian Herrera
  */
 public class Pokemon {
-
-    //Atributos
+    
+    
+    
+//Atributos
     protected String tipo;
     protected String nombre;
     protected int nivel;
@@ -22,6 +25,7 @@ public class Pokemon {
     protected double precision;
     protected List<String> habilidades;
 
+    
     Pokemon() {
     }
 
