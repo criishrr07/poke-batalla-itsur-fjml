@@ -1,3 +1,7 @@
+/**
+ *
+ * @author S22120225 CRISTIAN HERRERA 
+ */
 package mx.edu.itsur.pokebatalla.model.Battles;
 
 import java.util.ArrayList;

@@ -5,9 +5,9 @@
     
 
     /**
-     *
-     * @author 
-     */
+ *
+ * @author S22120225 CRISTIAN HERRERA 
+ */
     public abstract class Pokemon {
 
         //Atributos

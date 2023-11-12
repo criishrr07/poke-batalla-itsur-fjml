@@ -5,11 +5,6 @@ import mx.edu.itsur.pokebatalla.model.Pokemons.Pokemon;
 
 
 /**
- * Esta clase representa nn movimiento o ataque 
- * (Move en inglés; わざ Movimiento en japonés) 
- * es una técnica que los Pokémon son capaces de aprender 
- * y que usan en los combates con el fin de debilitar a sus oponentes.
- * https://www.wikidex.net/wiki/Movimiento
  * 
  * @author Cristian Herrera s22120225
  */
