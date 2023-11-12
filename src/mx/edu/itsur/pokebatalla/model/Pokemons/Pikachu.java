@@ -10,7 +10,7 @@ import mx.edu.itsur.pokebatalla.model.Moves.Movimiento;
  *
  * @author Cristian Herrera
  */
-public class Pikachu  extends Pokemon{
+public abstract class Pikachu  extends Pokemon{
     
 
     public enum Movimientos {
@@ -35,27 +35,36 @@ public class Pikachu  extends Pokemon{
         this(); //invocando al constructor default
         this.nombre = nombre;
     }
-    
-     public void atacar(Pokemon oponente, Pikachu.Movimientos movimientoAUtilizar) {
-
-        //Instanciar el movimiento solicitado
-        Movimiento instanciaMovimiento;        
-        switch (movimientoAUtilizar) {
-            case IMPACTRUENO:
-                instanciaMovimiento = new Impactrueno();
-                break;
-            case ATAQUE_RAPIDO:
-                instanciaMovimiento = new AtaqueRapido();
-                break;
-            case LATIGO:
-                instanciaMovimiento = new Latigo();
-                break;          
-            default:
-                throw new AssertionError();
+     @Override
+        public Enum[] getMovimientos() {
+            return Pikachu.Movimientos.values();
         }
 
-        
-        instanciaMovimiento.utilizar(this, oponente);
+        @Override
+        public void atacar(Pokemon oponente, int ordinalMovimiento) {
+
+            Movimiento instanciaMovimiento;
+            Pikachu.Movimientos movimientoAUtilizar = Pikachu.Movimientos.values()[ordinalMovimiento];
+
+            if (this.hp <= 0) {
+                System.out.println("Pikachu esta agotado y no puede realizar mas movimientos.");
+                return;
+            }
+            switch (movimientoAUtilizar) {
+                case IMPACTRUENO:
+                    instanciaMovimiento = new Impactrueno();
+                    break;
+                case ATAQUE_RAPIDO:
+                    instanciaMovimiento = new AtaqueRapido();
+                    break;
+                case LATIGO:
+                    instanciaMovimiento = new Latigo();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+
+            instanciaMovimiento.utilizar(this, oponente);
+        }
+
     }
-   
-}

@@ -7,7 +7,7 @@ import  mx.edu.itsur.pokebatalla.model.Moves.Movimiento;
  *
  * @author Cristian Herrera Gonzalez
  */
-public class Charmander extends Pokemon {
+public  class Charmander extends Pokemon {
     
       public enum Movimientos {
         ATAQUE_RAPIDO,
@@ -28,10 +28,19 @@ public class Charmander extends Pokemon {
         this(); //invocando al constructor default
         this.nombre = nombre;
     }
-    
-     public void atacar(Pokemon oponente, Charmander.Movimientos movimientoAUtilizar) {
+    @Override
+    public Enum[] getMovimientos() {
+        return Charmander.Movimientos.values();
+    }
 
-        
+    @Override
+    public void atacar(Pokemon oponente, int ordinalMovimiento) {
+
+        if (this.hp <= 0) {
+            System.out.println("Charmander esta muriendo y no puede atacar mas.");
+            return;
+        }
+        Charmander.Movimientos movimientoAUtilizar = Charmander.Movimientos.values()[ordinalMovimiento];
         Movimiento instanciaMovimiento;
         switch (movimientoAUtilizar) {
             case ATAQUE_RAPIDO:

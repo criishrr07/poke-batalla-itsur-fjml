@@ -30,9 +30,19 @@ public class Mewtwo extends Pokemon {
         this(); //constructor default
         this.nombre = nombre;
     }
-    
-     public  void atacar (Pokemon oponente,  Mewtwo.Movimientos  movimientoAUtilizar)
-    {
+    @Override
+    public Enum[] getMovimientos() {
+        return Mewtwo.Movimientos.values();
+    }
+
+    @Override
+    public void atacar(Pokemon oponente, int ordinalMovimiento) {
+
+        if (this.hp <= 0) {
+            System.out.println("Mewtwo esta muriendo y no puede atacar mas.");
+            return;
+        }
+        Mewtwo.Movimientos movimientoAUtilizar = Mewtwo.Movimientos.values()[ordinalMovimiento];
         Movimiento instanciaMovimiento;
         switch (movimientoAUtilizar){
             

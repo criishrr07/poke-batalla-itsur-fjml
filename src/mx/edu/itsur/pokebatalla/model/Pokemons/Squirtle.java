@@ -13,7 +13,7 @@ import mx.edu.itsur.pokebatalla.model.Moves.PulsoDragon;
  *
  * @author Cristian Herrera Gonzalez
  */
-public class Squirtle extends Pokemon {
+public  class Squirtle extends Pokemon {
      public  enum Movimientos{
          Cascada,
          Refugio,
@@ -32,9 +32,19 @@ public class Squirtle extends Pokemon {
         this(); //constructor default
         this.nombre = nombre;
     }
-    
-    public  void atacar (Pokemon oponente,  Squirtle.Movimientos  movimientoAUtilizar)
-    {
+     @Override
+    public Enum[] getMovimientos() {
+        return Squirtle.Movimientos.values();
+    }
+
+    @Override
+    public void atacar(Pokemon oponente, int ordinalMovimiento) {
+
+        if (this.hp <= 0) {
+            System.out.println("Squirtle. esta muriendo y no puede atacar mas.");
+            return;
+        }
+        Squirtle.Movimientos movimientoAUtilizar = Squirtle.Movimientos.values()[ordinalMovimiento];
         Movimiento instanciaMovimiento;
         switch (movimientoAUtilizar){
             

@@ -2,7 +2,7 @@ package mx.edu.itsur.pokebatalla.model.Moves;
 
 /**
  *
- * @author Cristian Herrera Gonzalez
+ * @author Cristian Herrera Gonzalez s22120225
  */
 public class CampoPsiquico extends MovimientoEstado{
     public CampoPsiquico  ()

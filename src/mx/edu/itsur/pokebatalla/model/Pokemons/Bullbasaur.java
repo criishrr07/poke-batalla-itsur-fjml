@@ -10,6 +10,16 @@ import mx.edu.itsur.pokebatalla.model.Moves.Movimiento;
  * @author Cristian Herrera Gonzalez
  */
 public class Bullbasaur extends Pokemon {
+
+    @Override
+    public void atacar(Pokemon oponente, int ordinalMovimiento) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Enum[] getMovimientos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     public enum Movimientos {
         ATAQUE_RAPIDO,
         LATIGO

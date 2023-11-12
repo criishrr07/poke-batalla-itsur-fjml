@@ -11,7 +11,7 @@ import mx.edu.itsur.pokebatalla.model.Pokemons.Pokemon;
  * y que usan en los combates con el fin de debilitar a sus oponentes.
  * https://www.wikidex.net/wiki/Movimiento
  * 
- * @author Cristian Herrera
+ * @author Cristian Herrera s22120225
  */
 public class Movimiento {
 

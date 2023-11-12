@@ -1,5 +1,7 @@
-package mx.edu.itsur.pokebatalla;
+package mx.edu.itsur.pokebatalla.model.Pokemons;
 
+import mx.edu.itsur.pokebatalla.model.Battles.Batalla;
+import mx.edu.itsur.pokebatalla.model.Battles.Entrenador;
 import mx.edu.itsur.pokebatalla.model.Pokemons.Bullbasaur;
 import mx.edu.itsur.pokebatalla.model.Pokemons.Pikachu;
 import mx.edu.itsur.pokebatalla.model.Pokemons.Charmander;
@@ -19,8 +21,27 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        //Unidad 4 
         Squirtle a = new Squirtle ("Squirtle");
         Mewtwo b = new Mewtwo("Mewtwo");
+        Machoke c = new Machoke ("Machoke");
+        Charmander e = new Charmander("Dragon rojo");
+       
+
+        Entrenador en1 = new Entrenador("Cristian");
+        en1.capturarPokemon(a);
+        en1.capturarPokemon(e);
+
+        Entrenador en2 = new Entrenador("Milan");
+        en2.capturarPokemon(b);
+        en2.capturarPokemon(c);
+
+        Batalla x = new Batalla(en1, en2);
+        x.desarrollarBatalla();
+        
+        /* UNIDAD 3
+        Squirtle a = new Squirtle ("Squirtle") {};
+        Mewtwo b = new Mewtwo("Mewtwo") {};
         Machoke c = new Machoke ("Machoke");
         
         

@@ -7,7 +7,7 @@ package mx.edu.itsur.pokebatalla.model.Moves;
 
 /**
  *
- * @author Cristian Herrera
+ * @author Cristian Herrera s22120225
  */
 public class Descanso extends MovimientoEstado {
     public Descanso  ()

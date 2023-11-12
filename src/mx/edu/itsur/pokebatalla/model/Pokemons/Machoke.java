@@ -8,7 +8,7 @@ import mx.edu.itsur.pokebatalla.model.Moves.Movimiento;
  * @Author s22120225 Cristian Herrera Gonzalez
  */
 
-public class Machoke extends Pokemon {    
+public  class Machoke extends Pokemon {    
 
     public ContraAtaque instanciaMovimiento;
      public  enum Movimientos{
@@ -30,10 +30,19 @@ public class Machoke extends Pokemon {
         this(); 
         this.nombre = nombre;
     }
+@Override
+    public Enum[] getMovimientos() {
+        return Machoke.Movimientos.values();
+    }
 
+    @Override
+    public void atacar(Pokemon oponente, int ordinalMovimiento) {
 
-     public  void atacar (Pokemon oponente,  Machoke.Movimientos  movimientoAUtilizar)
-    {
+        if (this.hp <= 0) {
+            System.out.println("Machoke. esta muriendo y no puede atacar mas.");
+            return;
+        }
+        Machoke.Movimientos movimientoAUtilizar = Machoke.Movimientos.values()[ordinalMovimiento];
         Movimiento instanciaMovimiento;
         switch (movimientoAUtilizar){
             case CONTRAATAQUE:            
