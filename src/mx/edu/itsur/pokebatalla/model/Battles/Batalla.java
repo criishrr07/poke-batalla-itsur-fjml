@@ -30,35 +30,53 @@ public class Batalla {
 
         System.out.println("");
 
-        eligirPokemon(entrenador1);
-        eligirPokemon(entrenador2);
+        do {
+            try {
+                eligirPokemon(entrenador1);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Solo puedes elegir entre  " + "[" + entrenador1.getPokemonsCapturados().size() + "]" + "  Elige alguno de tus Pokemons");
+                entrenador1.setPokemonActual(null);
+            }
+        } while (entrenador1.getPokemonActual() == null);
+
+        do {
+            try {
+                eligirPokemon(entrenador2);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Solamente cuentas con:  " + "["+ entrenador2.getPokemonsCapturados().size() + "]" + "  Elige alguno de tus Pokemons");
+                entrenador2.setPokemonActual(null);
+            }
+        } while (entrenador2.getPokemonActual() == null);
 
         while (!batallaFinalizada) {
             Entrenador entrenadorEnTurno = (turno == 1) ? entrenador1 : entrenador2;
             Entrenador oponente = (turno == 1) ? entrenador2 : entrenador1;
 
-            System.out.println("Turno del entrenador: " + entrenadorEnTurno.getNombre());
+            System.out.println(" Turno del siguiente entrenador: " + entrenadorEnTurno.getNombre());
 
-           
-            if (entrenadorEnTurno.getPokemonActual() == null || entrenadorEnTurno.getPokemonActual().gethp() <= 0) {
-                cambiarPokemon(entrenadorEnTurno);
-            }
-           
+            
             if (oponente.getPokemonActual() == null) {
-                System.out.println("El oponente no ha a seleccionado un pokemon actual");
+                System.out.println("No hay un Pokemon seleccionado por ahora para el contrincante");
                 return;
             }
 
-  
             seleccionarAtaque(entrenadorEnTurno, oponente.getPokemonActual());
+            if (entrenadorEnTurno.getPokemonActual() == null || entrenadorEnTurno.getPokemonActual().gethp() <= 0) {
+                cambiarPokemon(entrenadorEnTurno);
 
-            Pokemon pokemonEnTurno = entrenadorEnTurno.getPokemonActual();
+                
+                while (entrenadorEnTurno.getPokemonActual() == null || entrenadorEnTurno.getPokemonActual().gethp() <= 0) {
+                    System.out.println("El entrenador no puede seguir sin antes cambiar de pokemon");
+                    cambiarPokemon(entrenadorEnTurno);
+                }
+            }
 
             if (oponente.estaDerrotado()) {
-                System.out.println("El personaje " + oponente.getNombre() + "Se fue");
+                System.out.println("El entrenador " + oponente.getNombre() + " ha sido derrotado");
+                System.out.println(" Fin de la batalla");
                 batallaFinalizada = true;
             } else {
-              
+                
                 turno = (turno == 1) ? 2 : 1;
             }
         }
@@ -129,11 +147,15 @@ public class Batalla {
 
         char respuesta = 'N';
 
-        try {
-            respuesta = (char) System.in.read();
-            System.in.read((new byte[System.in.available()]));
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        while (true) {
+            try {
+                respuesta = (char) System.in.read();
+                System.in.read((new byte[System.in.available()]));
+                break;  // Salir  si no hay excepciones
+            } catch (IOException ex) {
+                System.out.println("Error de entrada o salida al leer la respuesta. Intenta de nuevo.");
+                ex.printStackTrace();
+            }
         }
 
         if (respuesta == 'S' || respuesta == 's') {
@@ -153,14 +175,20 @@ public class Batalla {
             try {
                 auxLectura = (char) System.in.read();
                 System.in.read((new byte[System.in.available()]));
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
-            Pokemon nuevoPokemon = entrenador.getPokemonsCapturados().get(Character.getNumericValue(auxLectura) - 1);
-            entrenador.setPokemonActual(nuevoPokemon);
+             int indicePokemonNuevo = Character.getNumericValue(auxLectura) - 1;
 
-            System.out.println("Has elegido a " + nuevoPokemon.getClass().getSimpleName() + " en tu equipo.");
-        }
+            
+            if (indicePokemonNuevo >= 0 && indicePokemonNuevo < entrenador.getPokemonsCapturados().size()) {
+                Pokemon nuevoPokemon = entrenador.getPokemonsCapturados().get(indicePokemonNuevo);
+                entrenador.setPokemonActual(nuevoPokemon);
+                System.out.println("Has elegido al pokemon " + nuevoPokemon.getClass().getSimpleName() + " en tu equipo.");
+            } else {
+                System.out.println("La opción no ha sido valida, trata de nuevo con un nuevo digito.");
+            }
+    }
     }
 }
