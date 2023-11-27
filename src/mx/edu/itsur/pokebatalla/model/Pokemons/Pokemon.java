@@ -1,5 +1,6 @@
     package mx.edu.itsur.pokebatalla.model.Pokemons;
 
+import java.io.Serializable;
     import java.util.List;
     import java.util.Random;
     
@@ -8,7 +9,7 @@
  *
  * @author S22120225 CRISTIAN HERRERA 
  */
-    public abstract class Pokemon {
+    public abstract class Pokemon implements Serializable{
 
         //Atributos
         protected String tipo;
