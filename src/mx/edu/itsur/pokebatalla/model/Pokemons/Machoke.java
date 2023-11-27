@@ -1,4 +1,5 @@
 package mx.edu.itsur.pokebatalla.model.Pokemons;
+import java.io.Serializable;
 import mx.edu.itsur.pokebatalla.model.Moves.ContraAtaque;
 import mx.edu.itsur.pokebatalla.model.Moves.Lanzallamas;
 import mx.edu.itsur.pokebatalla.model.Moves.Descanso;
@@ -8,7 +9,7 @@ import mx.edu.itsur.pokebatalla.model.Moves.Movimiento;
  * @Author s22120225 Cristian Herrera Gonzalez
  */
 
-public  class Machoke extends Pokemon {    
+public  class Machoke extends Pokemon implements Serializable{    
 
     public ContraAtaque instanciaMovimiento;
      public  enum Movimientos{

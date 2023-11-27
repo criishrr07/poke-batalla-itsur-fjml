@@ -1,5 +1,7 @@
 package mx.edu.itsur.pokebatalla.model.Pokemons;
-
+import java.io.IOException;
+import java.io.Serializable;
+import mx.edu.itsur.pokebatalla.model.ControlArchivos.FileManager;
 import mx.edu.itsur.pokebatalla.model.Battles.Batalla;
 import mx.edu.itsur.pokebatalla.model.Battles.Entrenador;
 import mx.edu.itsur.pokebatalla.model.Pokemons.Bullbasaur;
@@ -13,7 +15,7 @@ import mx.edu.itsur.pokebatalla.model.Pokemons.Squirtle;
  *
  * @author Cristian Herrera Gonzalez
  */
-public class Main {
+public class Main implements Serializable {
 
     /**
      * @param args the command line arguments
@@ -21,7 +23,10 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        //Unidad 4 
+        //Unidades 4 y 5 
+        Batalla k = FileManager.cargarPartida();
+        
+        if (k == null) {
         Squirtle a = new Squirtle ("Squirtle");
         Mewtwo b = new Mewtwo("Mewtwo");
         Machoke c = new Machoke ("Machoke");
@@ -36,8 +41,50 @@ public class Main {
         en2.capturarPokemon(b);
         en2.capturarPokemon(c);
 
-        Batalla x = new Batalla(en1, en2);
-        x.desarrollarBatalla();
+        k = new Batalla(en1, en2);
+        }
+        k.desarrollarBatalla();
+        
+        
+        if (k.pkmnGanador()) {
+            System.out.println("Quieres iniciar otra partida ? (S/N)");
+
+            char respuesta = 'N';
+            try {
+                respuesta = (char) System.in.read();
+                System.in.read((new byte[System.in.available()]));
+            } catch (IOException ex) {
+                System.out.println("Error. Vuelve a intentarlo");
+                ex.printStackTrace();
+            }
+
+            if (respuesta == 'S' || respuesta == 's') {
+                // Borra el archivo de la partida guardada
+                FileManager.eliminarPartida();
+                //Pokemons 
+                Squirtle a = new Squirtle ("Squirtle");
+                Mewtwo b = new Mewtwo("Mewtwo");
+                Machoke c = new Machoke ("Machoke");
+                Charmander e = new Charmander("Dragon rojo");
+                
+                Entrenador newEntrenador1 = new Entrenador("Milan");
+                newEntrenador1.capturarPokemon(a);
+                newEntrenador1.capturarPokemon(e);
+                
+                Entrenador newEntrenador2 = new Entrenador("Cristian");
+                newEntrenador2.capturarPokemon(b);
+                newEntrenador2.capturarPokemon(c);
+                
+
+                Batalla nuevaBatalla = new Batalla(newEntrenador1, newEntrenador2);
+                nuevaBatalla.desarrollarBatalla();
+            }
+        }
+    }
+}
+        
+        
+            
         
         /* UNIDAD 3
         Squirtle a = new Squirtle ("Squirtle") {};
@@ -119,6 +166,6 @@ public class Main {
         miMewtwo.atacar(MCK, "Megapuño");
         * */
         
-    }
     
-}
+    
+

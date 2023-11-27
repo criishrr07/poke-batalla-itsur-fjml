@@ -1,7 +1,7 @@
 
 package mx.edu.itsur.pokebatalla.model.Pokemons;
 
-
+import java.io.Serializable;
 import mx.edu.itsur.pokebatalla.model.Moves.AtaqueRapido;
 import mx.edu.itsur.pokebatalla.model.Moves.Latigo;
 import mx.edu.itsur.pokebatalla.model.Moves.Movimiento;
@@ -9,7 +9,7 @@ import mx.edu.itsur.pokebatalla.model.Moves.Movimiento;
  *
  * @author Cristian Herrera Gonzalez
  */
-public class Bullbasaur extends Pokemon {
+public class Bullbasaur extends Pokemon implements Serializable{
 
     @Override
     public void atacar(Pokemon oponente, int ordinalMovimiento) {

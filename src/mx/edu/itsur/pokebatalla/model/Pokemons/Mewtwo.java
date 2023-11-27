@@ -1,4 +1,5 @@
 package mx.edu.itsur.pokebatalla.model.Pokemons;
+import java.io.Serializable;
 import mx.edu.itsur.pokebatalla.model.Moves.Movimiento;
 import mx.edu.itsur.pokebatalla.model.Moves.Psicorrayo;
 import mx.edu.itsur.pokebatalla.model.Moves.Teletransporte;
@@ -7,7 +8,7 @@ import mx.edu.itsur.pokebatalla.model.Moves.CampoPsiquico;
  *
  * @author Cristian Herrera Gonzalez
  */
-public class Mewtwo extends Pokemon {
+public class Mewtwo extends Pokemon implements Serializable{
 
     
     

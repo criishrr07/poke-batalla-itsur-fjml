@@ -3,13 +3,15 @@ package mx.edu.itsur.pokebatalla.model.Battles;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
+import mx.edu.itsur.pokebatalla.model.ControlArchivos.FileManager;
 import mx.edu.itsur.pokebatalla.model.Pokemons.Pokemon;
 
 /**
  *
  * @author S22120225 CRISTIAN HERRERA 
  */
-public class Batalla {
+public class Batalla implements Serializable{
 
     protected Entrenador entrenador1;
     protected Entrenador entrenador2;
@@ -21,6 +23,14 @@ public class Batalla {
     public Batalla(Entrenador entrenador1, Entrenador entrenador2) {
         this.entrenador1 = entrenador1;
         this.entrenador2 = entrenador2;
+    }
+    
+    public boolean pkmnGanador() {
+        return (entrenador1.estaDerrotado() || entrenador2.estaDerrotado());
+    }
+
+    public void salvarProgreso() {
+        FileManager.guardarPartida(this);
     }
 
     public void desarrollarBatalla() {
@@ -76,7 +86,7 @@ public class Batalla {
                 System.out.println(" Fin de la batalla");
                 batallaFinalizada = true;
             } else {
-                
+                salvarProgreso();
                 turno = (turno == 1) ? 2 : 1;
             }
         }
@@ -86,7 +96,7 @@ public class Batalla {
         int idx = 1;
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         for (Pokemon pokemon : EnTn.getPokemonsCapturados()) {
-            System.out.println(idx + ".- " + pokemon.getClass().getSimpleName());
+            System.out.println(idx + ".- " + pokemon.getClass().getSimpleName() + " hp: " + pokemon.gethp() + "  defensa: " + pokemon.getDefensa() + "  nivel: " + pokemon.getNivel());
             idx++;
              System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
