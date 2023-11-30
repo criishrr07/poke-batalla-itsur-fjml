@@ -92,11 +92,16 @@ public class Batalla implements Serializable{
         }
     }
 
-    private void eligirPokemon(Entrenador EnTn) {
+     private void eligirPokemon(Entrenador EnTn) {
         int idx = 1;
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         for (Pokemon pokemon : EnTn.getPokemonsCapturados()) {
+            if (pokemon.gethp()<=0){
+            System.out.println(idx + ".- " + pokemon.getClass().getSimpleName() + " hp: " + "0" + "  defensa: " + pokemon.getDefensa() + "  nivel: " + pokemon.getNivel());
+            }
+            else{
             System.out.println(idx + ".- " + pokemon.getClass().getSimpleName() + " hp: " + pokemon.gethp() + "  defensa: " + pokemon.getDefensa() + "  nivel: " + pokemon.getNivel());
+            }
             idx++;
              System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }

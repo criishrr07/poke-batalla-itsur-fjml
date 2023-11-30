@@ -17,7 +17,7 @@ import mx.edu.itsur.pokebatalla.model.Battles.Batalla;
 
 public class FileManager {
 
-    public static final String NOMBRE_PARTIDA = "ptd.pkm";
+    public static final String NOMBRE_PARTIDA = "ptd-pkm.txt";
 
     public static void guardarPartida(Batalla x) {
         try (ObjectOutputStream escritorDeObjetos = new ObjectOutputStream(new FileOutputStream( NOMBRE_PARTIDA))) {
